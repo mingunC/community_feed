@@ -8,14 +8,9 @@ public abstract class Content {
         checkText(contentText);
         this.contentText = contentText;
     }
-
-    protected abstract void checkText(String contentText);
+   protected abstract void checkText(String contentText);
 
     public String getContentText() {
-        return contentText();
+        return contentText;
     }
-
-
-
-
 }

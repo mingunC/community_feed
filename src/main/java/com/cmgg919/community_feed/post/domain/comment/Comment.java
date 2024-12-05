@@ -1,22 +1,34 @@
-package com.cmgg919.community_feed.post.domain;
+package com.cmgg919.community_feed.post.domain.comment;
 
 import com.cmgg919.community_feed.common.domain.PositiveIntegerCounter;
-import com.cmgg919.community_feed.post.domain.content.PostContent;
-import org.apache.catalina.User;
+import com.cmgg919.community_feed.post.domain.Post;
+import com.cmgg919.community_feed.post.domain.content.Content;
+import com.cmgg919.community_feed.user.domain.User;
 
-public class Post {
+public class Comment {
 
     private final Long id;
+    private final Post post;
     private final User author;
-    private final PostContent content;
+    private final Content content;
     private final PositiveIntegerCounter likeCount;
 
-    public Post(Long id, User author, PostContent content) {
+    public Comment(Long id, Post post, User author, Content content) {
+
         if(author == null) {
             throw new IllegalArgumentException("Author cannot be null");
-         }
+        }
+
+        if(post == null) {
+            throw new IllegalArgumentException("Post cannot be null");
+        }
+        if(content == null) {
+            throw new IllegalArgumentException("Content cannot be null");
+        }
+
 
         this.id = id;
+        this.post = post;
         this.author = author;
         this.content = content;
         this.likeCount = new PositiveIntegerCounter();
@@ -28,11 +40,7 @@ public class Post {
         }
         likeCount.increase();
     }
-
-    public void unlike(User user) {
+    public void unlike() {
         this.likeCount.decrease();
     }
-
 }
-
-   

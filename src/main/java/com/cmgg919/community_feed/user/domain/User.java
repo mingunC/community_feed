@@ -1,18 +1,20 @@
 package com.cmgg919.community_feed.user.domain;
 
+import com.cmgg919.community_feed.common.domain.PositiveIntegerCounter;
+
 import java.util.Objects;
 
 public class User {
     private final Long id;
     private final UserInfo info;
-    private final UserRelationCounter followingCount;
-    private final UserRelationCounter followerCounter;
+    private final PositiveIntegerCounter followingCount;
+    private final PositiveIntegerCounter followerCounter;
 
-    public User(Long id, UserInfo userInfo) {
+    public User(Long id, UserInfo info, PositiveIntegerCounter followingCount, PositiveIntegerCounter followerCounter) {
         this.id = id;
-        this.info = userInfo();
-        this.followingCount = new UserRelationCounter();
-        this.followerCounter = new UserRelationCounter();
+        this.info = info;
+        this.followingCount = followingCount;
+        this.followerCounter = followerCounter;
     }
 
     public void follow(User targetUser) {

@@ -15,7 +15,7 @@ public class CommentContent extends Content {
         }
 
         if(MAX_COMMENT_LENGTH < contentText.length()) {
-            throw new IllegalArgumentException("Comment content must have at most " + MAX_COMMENT_LENGTH + " characters");
+            throw new IllegalArgumentException("Comm ent content must have at most " + MAX_COMMENT_LENGTH + " characters");
         }
     }
 }
