@@ -32,6 +32,11 @@ public class Post {
     public void unlike(User user) {
         this.likeCount.decrease();
     }
+    public void update(User user, String updatedContent) {
+        if(!this.author.equals(user)) {
+            throw new IllegalArgumentException("Cannot update more than one user");
+        }
+    }
 
 }
 
